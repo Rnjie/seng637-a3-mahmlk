@@ -1,5 +1,9 @@
 # seng637-assignment-3
-
+Group members are:
+Mahsa Malek
+Akram Ansari
+Quinn Cooper
+John matthew Sarno
 # Guidline
 - read [assignment guideline](Assignment3.md) 
 - commit and push output ([assignment output template](Assignment3-ReportTemplate.md))
