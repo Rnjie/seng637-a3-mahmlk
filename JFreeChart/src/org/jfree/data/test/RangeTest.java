@@ -580,7 +580,7 @@ public class RangeTest {
 			exampleRange = Range.expand(null, -0.25, -1);
 		//"The lowerrange should be 3, the upperrange 2"
 	}
-
+	@Test
 	public void test_expand_example() {
 		double origLower = 2;
 		double origHigher= 6;
@@ -592,38 +592,38 @@ public class RangeTest {
 		assertEquals(newLower, exampleRange.getLowerBound(), 0);
 		assertEquals(newHigher, exampleRange.getUpperBound(), 0);
 	}
-
-	public void test_expandToInclude_example(double origLower, double origHigher, double newValue, double newLower,
-			double newHigher, String expected) {
+	@Test
+	public void test_expandToInclude_example() {
 		exampleRange = Range.expandToInclude(new Range(1, 10), 5);
 		assertEquals(true, exampleRange.contains(5));
 		assertEquals(1, exampleRange.getLowerBound(), 0);
 		assertEquals(10, exampleRange.getUpperBound(), 0);
 	}
-
+	@Test
 	public void test_expandToInclude_null() {
 		exampleRange = Range.expandToInclude(null, 0);
 		assertEquals(true, exampleRange.contains(0));
 	}
-
+	@Test
 	/* CONTAINS TEST */
 	public void test_contains_true() {
 		exampleRange = new Range(-1, 0);
 		assertEquals(true, exampleRange.contains(0));
 	}
-
+	@Test
 	public void test_contains_false() {
 		exampleRange = new Range(5, 10);
 		assertEquals(false, exampleRange.contains(3));
 	}
 
 	/* GET CENTRAL VALUE TEST */
-
+	@Test
 	public void test_getCentralValue_example() {
 		exampleRange = new Range(0, 10);
 		assertEquals(5, exampleRange.getCentralValue(), 0);
 	}
-
+	
+	@Test
 	/* GET LENGTH TEST */
 	public void test_getLength_example() {
 		exampleRange = new Range(0, 10);
@@ -639,6 +639,7 @@ public class RangeTest {
 	}
 
 	/* TO STRING TEST */
+	@Test
 	public void test_toString_example() {
 		exampleRange = new Range(-1000000, 1000000);
 		assertEquals("Range[" + -1000000 + "," + 1000000 + "]", exampleRange.toString());
@@ -657,12 +658,13 @@ public class RangeTest {
 		exampleRange = null;
 		Range.shift(exampleRange, 1, true);
 	}
-
+	@Test
 	public void test_LowerBound() {
 		exampleRange = new Range(-3, 10);
 		assertEquals(-3, exampleRange.getLowerBound(), 0);
 	}
-
+	
+	@Test
 	public void test_UpperBound() {
 		exampleRange = new Range(-10, 9);
 		assertEquals(9, exampleRange.getUpperBound(), 0);
@@ -670,10 +672,12 @@ public class RangeTest {
 
 
 	// Testing when ranges intersect at 1 point
+	@Test
 	public void test_Intersects() {
 		exampleRange = new Range(-10, -3);
 		assertEquals(expected, exampleRange.intersects(-3, 11));
 	}
+	@Test
 	public void test_Shift() {
 		exampleRange = new Range(-5, -1);
 		Range expectedRange = new Range(-1, 0);
