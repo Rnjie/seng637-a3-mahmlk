@@ -600,6 +600,20 @@ public class RangeTest {
 		assertEquals(10, exampleRange.getUpperBound(), 0);
 	}
 	@Test
+	public void test_expandToInclude_Upwards() {
+		exampleRange = Range.expandToInclude(new Range(1, 10), 15);
+		assertEquals(true, exampleRange.contains(15));
+		assertEquals(1, exampleRange.getLowerBound(), 0);
+		assertEquals(15, exampleRange.getUpperBound(), 0);
+	}
+	@Test
+	public void test_expandToInclude_Downwards() {
+		exampleRange = Range.expandToInclude(new Range(5, 10), 0);
+		assertEquals(true, exampleRange.contains(0));
+		assertEquals(0, exampleRange.getLowerBound(), 0);
+		assertEquals(10, exampleRange.getUpperBound(), 0);
+	}
+	@Test
 	public void test_expandToInclude_null() {
 		exampleRange = Range.expandToInclude(null, 0);
 		assertEquals(true, exampleRange.contains(0));
@@ -670,18 +684,48 @@ public class RangeTest {
 		assertEquals(9, exampleRange.getUpperBound(), 0);
 	}
 
-
 	// Testing when ranges intersect at 1 point
 	@Test
-	public void test_Intersects() {
+	public void test_Intersects_Negative_Edge() {
 		exampleRange = new Range(-10, -3);
-		assertEquals(expected, exampleRange.intersects(-3, 11));
+		assertEquals(true, exampleRange.intersects(-3, 11));
 	}
 	@Test
-	public void test_Shift() {
+	public void test_Intersects_Positive() {
+		exampleRange = new Range(1, 25);
+		assertEquals(true, exampleRange.intersects(12, 1000));
+	}
+	@Test
+	public void test_Intersects_Positive_False() {
+		exampleRange = new Range(1, 25);
+		assertEquals(false, exampleRange.intersects(26, 1000));
+	}
+	@Test
+	public void test_Intersects_Within_Positive_True() {
+		exampleRange = new Range(2, 25);
+		assertEquals(true, exampleRange.intersects(1, 1000));
+	}
+	@Test
+	public void test_Intersects_Within_ImpossibleRange() {
+		exampleRange = new Range(2, 25);
+		assertEquals(false, exampleRange.intersects(10, 1));
+	}
+	@Test
+	public void test_Intersects_Lower_ImpossibleRange_False() {
+		exampleRange = new Range(2, 25);
+		assertEquals(false, exampleRange.intersects(0, -100));
+	}
+	@Test
+	public void test_Shift_NoZeroCrossing() {
 		exampleRange = new Range(-5, -1);
 		Range expectedRange = new Range(-1, 0);
 		assertEquals(expectedRange, Range.shift(exampleRange, 4, false));
+	}
+	@Test
+	public void test_Shift_AllowZeroCrossing() {
+		exampleRange = new Range(-5, -1);
+		Range expectedRange = new Range(-1, 3);
+		assertEquals(expectedRange, Range.shift(exampleRange, 4, true));
 	}
 
 	@After
