@@ -42,7 +42,7 @@ public class DataUtilitiesTest {
 			allowing(kvalues).getItemCount(); will(returnValue(3));
 			
 			allowing(kvalues).getValue(0); will(returnValue(-4));
-			allowing(kvalues).getValue(1); will(returnValue(null));
+			allowing(kvalues).getValue(1); will(returnValue(6));
 			allowing(kvalues).getValue(2); will(returnValue(12));
 
 			allowing(kvalues).getKey(0); will(returnValue(0));
