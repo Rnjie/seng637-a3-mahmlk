@@ -1,6 +1,8 @@
-### Data flow graph
+### Method: DataUtilities.calculateColumnTotal
 
-![Untitled Diagram.drawio(2)](/home/akram/Downloads/Untitled Diagram.drawio(2).png)
+#### Data flow graph
+
+![Untitled Diagram.drawio(2)](images/dfg_datautilities.png)
 
 ### Def-use sets per statement
 
@@ -15,7 +17,7 @@
 | 72     | {}         | {}            |
 | 74     | {}         | {}            |
 
-### DU-pairs per variable
+#### DU-pairs per variable
 
 
 
@@ -62,7 +64,7 @@
       }
 
 
-### for each test case show which pairs are covered
+#### DU-pairs covered by each test case
 
 | Test Case                                                    | Lines Covered                    | DU-pairs covered                                             |
 | ------------------------------------------------------------ | -------------------------------- | ------------------------------------------------------------ |
@@ -74,7 +76,7 @@
 
 
 
-### calculate the DU-Pair coverage.
+#### DU-Pair coverage.
 
 $$
 \begin{align*}
@@ -84,3 +86,78 @@ Coverage &= \frac {\text {DU-pairs covered}} {\text {Total DU-pairs}} \\
 \end{align*}
 $$
 
+---
+
+### Method: Range.equals
+
+#### Data flow graph
+
+![Untitled Diagram.drawio(2)](images/dfg_range.png)
+
+#### Def-use sets per statement
+
+| Line # | DEF     | USE     |
+| ------ | ------- | ------- |
+| 01     | {obj}   | {}      |
+| 02     | {}      | {}      |
+| 03     | {}      | {}      |
+| 05     | {range} | {obj}   |
+| 06     | {}      | {range} |
+| 07     | {}      | {}      |
+| 09     | {}      | {range} |
+| 10     | {}      | {}      |
+| 12     | {}      | {}      |
+| 13     | {}      | {}      |
+
+#### DU-pairs per variable
+
+1. **`obj`**
+
+   1. du(1, 2, obj) = {
+      	[1,2,3,13],
+      	[1,2,5,6,7,13],
+      	[1,2,5,6,9,10,13],
+      	[1,2,5,6,9,12,13]
+      }
+
+   2. du(1, 5, obj) = {
+      	[1,2,5,6,7,13],
+      	[1,2,5,6,9,10,13],
+      	[1,2,5,6,9,12,13]
+      }
+
+2. **`range`**
+
+   1. du(5, 6, range) = {
+      	[1,2,5,6,7,13],
+      	[1,2,5,6,9,10,13],
+      	[1,2,5,6,9,12,13]
+      }
+   2. du(5, 9, range) = {
+      	[1,2,5,6,9,10,13],
+      	[1,2,5,6,9,12,13]
+      }
+
+
+#### DU-pairs covered by each test case
+
+| Test Case                                                    | Lines Covered     | DU-pairs covered                                             |
+| ------------------------------------------------------------ | ----------------- | ------------------------------------------------------------ |
+| test_EqualsMethod_PositiveRange_SimilarValues()              | [1,2,5,6,9,12,13] | du(5, 6, range)<br />du(5, 9, range)<br />du(1, 2, obj)<br />du(1, 5, obj) |
+| test_EqualsMethod_PositiveRange_DifferentValues()            | [1,2,5,6,7,13]    | du(5, 6, range)<br />du(1, 5, obj)<br />du(1, 2, obj)        |
+| test_EqualsMethod_OneNullRange_OneActualRange()              | [1,2,3,13]        | du(1, 2, obj)                                                |
+| test_EqualsMethod_NegativeRange_SimilarValues()              | [1,2,5,6,9,12,13] | du(5, 6, range)<br />du(5, 9, range)<br />du(1, 2, obj)<br />du(1, 5, obj) |
+| test_EqualsMethod_NegativeRange_DifferentValues()            | [1,2,5,6,7,13]    | du(5, 6, range)<br />du(1, 5, obj)<br />du(1, 2, obj)        |
+| test_EqualsMethod_PositiveandNegativeRange_DifferentValues() | [1,2,5,6,7,13]    | du(5, 6, range)<br />du(1, 5, obj)<br />du(1, 2, obj)        |
+
+
+
+#### DU-Pair coverage.
+
+$$
+\begin{align*}
+Coverage &= \frac {\text {DU-pairs covered}} {\text {Total DU-pairs}} \\
+&= \frac {4} {4} \\
+&= 100\%
+\end{align*}
+$$
