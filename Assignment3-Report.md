@@ -181,7 +181,23 @@ As a continuation of Assignment #2, the System Under Test (SUT) used in this act
 
 # 3 A detailed description of the testing strategy for the new unit test
 
+For our testing strategy for assignment 3, it remained very similar to assignment 2. The primary difference is the ability to look at the source code and being able to see the condition we missed. So naturally less importance was placed on the blackbox methodology and more placed on actively making the coverage go up. 
 
+The rest of our strategy remained consistent. Our boundary value analysis remained the same, alongside our use of mocking. A quick reminder of our boundary value analysis used was:  
+
+1. Invalid input (Bad combination of numerical Inputs) 
+2. Negative Value 
+3. Positive Value 
+4. Null Value 
+
+And for test cases where the input was dependent on ranges we used:  
+
+1. Upper (More than upper bound) 
+2. Lower (Less than lower bound) 
+3. Edge (At the edges of the range) 
+4. Middle (Middle of the range) 
+
+This was for the most part very effective as our original a2 files scored very high coverage. Especially our datautilities test. In fact, the only way we could increase coverage was adding a single null value to our mocking. Our range test did not perform as well, as you will see in the next section this was primarily due to our omitting of tests for the shift and intersects methods. 
 
 # 4 A high level description of five selected test cases you have designed using coverage information, and how they have increased code coverage
 
