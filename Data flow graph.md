@@ -2,20 +2,20 @@
 
 #### Data flow graph
 
-![Untitled Diagram.drawio(2)](images/dfg_datautilities.png)
+![](images/dfg_datautilities.png)
 
 ### Def-use sets per statement
 
 | Line # | DEF        | USE           |
 | ------ | ---------- | ------------- |
-| 66     | {total}    | {}            |
-| 67     | {rowCount} | {}            |
-| 68     | {r}        | {r, rowCount} |
-| 69     | {n}        | {r}           |
-| 70     | {}         | {n}           |
-| 71     | {total}    | {total, n}    |
-| 72     | {}         | {}            |
-| 74     | {}         | {}            |
+| 02     | {total}    | {}            |
+| 03     | {rowCount} | {}            |
+| 04     | {r}        | {r, rowCount} |
+| 05     | {n}        | {r}           |
+| 06     | {}         | {n}           |
+| 07     | {total}    | {total, n}    |
+| 08     | {}         | {}            |
+| 10     | {}         | {}            |
 
 #### DU-pairs per variable
 
@@ -78,13 +78,7 @@
 
 #### DU-Pair coverage.
 
-$$
-\begin{align*}
-Coverage &= \frac {\text {DU-pairs covered}} {\text {Total DU-pairs}} \\
-&= \frac {7} {7} \\
-&= 100\%
-\end{align*}
-$$
+![](images/coverage_datautilities.png)
 
 ---
 
@@ -154,10 +148,4 @@ $$
 
 #### DU-Pair coverage.
 
-$$
-\begin{align*}
-Coverage &= \frac {\text {DU-pairs covered}} {\text {Total DU-pairs}} \\
-&= \frac {4} {4} \\
-&= 100\%
-\end{align*}
-$$
+![](images/coverage_range.png)
