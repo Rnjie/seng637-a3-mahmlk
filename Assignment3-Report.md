@@ -225,23 +225,30 @@ This was for the most part very effective as our original a2 files scored very h
 ### RANGE 
 
 - Instruction 
+  
+
 ![](images/ss_range_instruction.png)  
 
 - Branch 
+
 ![](images/ss_range_branch.png) 
 
-- Method 
+- Method
+
 ![](images/ss_range_method.png) 
 
 ### DATAUTILITIES 
 
-- Instruction 
+- Instruction
+
 ![](images/ss_du_instruction.png) 
 
-- Branch 
+- Branch
+
 ![](images/ss_du_branch.png) 
 
-- Method 
+- Method
+
 ![](images/ss_du_method.png) 
 
 *The only code that is not being executed is the constructor and hence it is impacting the coverage. All methods to be tested have a 100% coverage.* 
